@@ -5,19 +5,22 @@ body {
     align-items: center;
 }
 
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
 .container {
-    flex-grow:1;
-    padding: 10px;
-    display:flex;
+    display: flex;
     height: 512px;
     width: 512px;
     flex-wrap: wrap;
-    box-sizing: border-box;
+    box-sizing: content-box;
+    border: 2px solid;
 }
 
 .container div{
-    height:6.25%;
-    width:6.25%;
     box-sizing: border-box;
     border: 1px solid;
 }
