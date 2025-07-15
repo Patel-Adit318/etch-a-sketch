@@ -1,5 +1,7 @@
 const container = document.querySelector(".container");
 const CONTAINER_SIZE = 512;
+let gridLinesVisible = true;
+
 function createGrid(size) {
 
     container.innerHTML='';
@@ -9,6 +11,7 @@ function createGrid(size) {
         //set heigh and width for initial grid squares
         square.style.height = `${squareSize}px`;
         square.style.width = `${squareSize}px`;
+        square.style.border = gridLinesVisible ? "1px solid" : "none";
 
         square.addEventListener("mouseover", () => {
             square.style.backgroundColor="black";
@@ -45,3 +48,25 @@ resizeBtn.addEventListener("click", () => {
 
     createGrid(gridSize);
 });
+
+const toggleGridLines = document.querySelector(".toggle")
+
+toggleGridLines.addEventListener("click", ()=> {
+    const allSquares = container.querySelectorAll("div");
+
+    if(gridLinesVisible){
+        allSquares.forEach(square => {
+            square.style.border = "none";
+        });
+        toggleGridLines.textContent = "Show Grid Lines";
+    }
+
+    else{
+        allSquares.forEach(square => {
+            square.style.border = "1px solid";
+        });
+        toggleGridLines.textContent = "Remove Grid Lines";
+    }
+
+    gridLinesVisible = !gridLinesVisible;
+})
