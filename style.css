@@ -3,6 +3,7 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(90deg, rgb(204, 112, 21),  rgba(231, 234, 232, 0.822), rgb(91, 160, 106))
 }
 
 .controls {

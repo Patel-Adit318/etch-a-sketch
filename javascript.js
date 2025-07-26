@@ -1,6 +1,8 @@
 const container = document.querySelector(".container");
 const CONTAINER_SIZE = 512;
 let gridLinesVisible = true;
+const toolBtn = document.querySelector('.tool');
+let currState = 'Draw';
 
 function createGrid(size) {
 
@@ -11,6 +13,7 @@ function createGrid(size) {
         //set heigh and width for initial grid squares
         square.style.height = `${squareSize}px`;
         square.style.width = `${squareSize}px`;
+        square.style.backgroundColor = 'white';
         square.style.border = gridLinesVisible ? "1px solid" : "none";
 
         square.addEventListener("mouseover", () => {
@@ -18,7 +21,7 @@ function createGrid(size) {
             const g = Math.floor(Math.random() * 256);
             const b = Math.floor(Math.random() * 256);
 
-            square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            square.style.backgroundColor = (currState == 'Draw') ? `rgb(${r}, ${g}, ${b})` : 'white';
         })
         container.appendChild(square);
     }
@@ -74,3 +77,9 @@ toggleGridLines.addEventListener("click", ()=> {
 
     gridLinesVisible = !gridLinesVisible;
 })
+
+// erase functionality
+toolBtn.addEventListener('click',()=>{
+    currState = (currState == 'Draw') ? 'Erase' : 'Draw';
+    toolBtn.textContent = (currState == 'Draw') ? 'Erase' : 'Draw';
+});
